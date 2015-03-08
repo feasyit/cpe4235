@@ -1,6 +1,7 @@
 package com.blogspot.na5cent.resourcelocal.repo;
 
 import com.blogspot.na5cent.resourcelocal.model.Department;
+import com.blogspot.na5cent.resourcelocal.model.Location;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -44,5 +45,12 @@ public class DepartmentT extends AbstractTestNGSpringContextTests {
         itSupport.setId(200);
 
         assertTrue(departments.contains(itSupport));
+    }
+    
+    @Test
+    public void findLocation() {
+        Department department = repo.getOne(80);
+        Location location = department.getLocation();
+        assertTrue(location.getStreetAddress().endsWith("The Oxford Science Park"));
     }
 }
